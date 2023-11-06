@@ -18,33 +18,34 @@ public class CreditAccountTest {
         Assertions.assertEquals(3_000, account.getBalance());
     }
 
+    //тесты для метода CreditAccount
+    @Test
+    public void shouldInitialNegativeBalance() { // тест на отрицательный стартовый баланс
+        CreditAccount account = new CreditAccount(
+                -100,
+                5_000,
+                15
+        );
 
-//    @Test //2
-//    public void shouldInitialNegativeBalance() { // тест на отрицательный стартовый баланс
-//        CreditAccount account = new CreditAccount(
-//                -100,
-//                5_000,
-//                15
-//        );
-//
-//        account.getBalance();
-//        Assertions.assertEquals(-100, account.getBalance());
-//    }
+        account.getBalance();
+        Assertions.assertEquals(0, account.getBalance());
+    }
 
-    @Test //3
+    @Test
     public void shouldInitialNegativeRate() { // тест на возможность задолжать банку сумму отрицательнного значения
-        Assertions.assertThrows(IllegalArgumentException.class , () ->{
-            CreditAccount account = new CreditAccount(
-                    0,
-                    -5000,
-                    15
-            );
+        CreditAccount account = new CreditAccount(
+                0,
+                0,
+                15
+        );
 
+        Assertions.assertThrows(IllegalAccessException.class, () -> {
+            account.creditLimit = -5000;
         });
     }
 
     //тесты для метода pay
-    @Test //4
+    @Test
     public void shouldPayFalse() {
         CreditAccount account = new CreditAccount(
                 0,
@@ -55,26 +56,19 @@ public class CreditAccountTest {
         boolean res = account.pay(200);
         Assertions.assertFalse( res );
     }
-
-    @Test //5
-    public void shouldPayFalseLimit() { //     сумма на initialBalance не должна выходить за рамки creditLimit
-
+    @Test
+    public void shouldPayTrue() { // сумма на initialBalance не должна выходить за рамки creditLimit
         CreditAccount account = new CreditAccount(
-                10_000,
-                5_000,
+                0,
+                1_000,
                 15
         );
-
-        Integer resSum = 20_000;
-
+        var resSum = 1100;
         account.pay(resSum);
         Assertions.assertFalse(account.getBalance() < -account.getCreditLimit());
-
-
     }
 
-
-    @Test //6
+    @Test
     public void shouldPayTrueBoundaryValues() { // должен уменьшится initialBalance на сумму покупки, но этого не происходит
         CreditAccount account = new CreditAccount(
                 1_000,
@@ -82,15 +76,14 @@ public class CreditAccountTest {
                 15
         );
         boolean res = account.pay(999);
-        account.pay(999);
+
         int resSumAfterPay = 1;
         Assertions.assertTrue( res );
         Assertions.assertEquals(resSumAfterPay, account.getBalance());
-        Assertions.assertEquals(1, account.getBalance());
     }
 
     //тесты для метода add
-    @Test //7
+    @Test
     public void shouldAdd() {
         CreditAccount account = new CreditAccount(
                 0,
@@ -101,7 +94,7 @@ public class CreditAccountTest {
         Assertions.assertTrue( res );
     }
 
-    @Test //8
+    @Test
     public void shouldAddZero() {
         CreditAccount account = new CreditAccount(
                 0,
@@ -112,7 +105,7 @@ public class CreditAccountTest {
         Assertions.assertFalse( res );
     }
 
-    @Test //9
+    @Test
     public void shouldAddCash() { //тест на пополнение карты
         CreditAccount account = new CreditAccount(
                 10,
@@ -126,7 +119,7 @@ public class CreditAccountTest {
     }
 
     //тесты для метода yearChange
-    @Test //10
+    @Test
     public void shouldNegativeScoreInterestCalculation() {
         CreditAccount account = new CreditAccount(
                 -200,
@@ -139,7 +132,7 @@ public class CreditAccountTest {
     }
 
 
-    @Test //11
+    @Test
     public void shouldInterestCalculation() {
         CreditAccount account = new CreditAccount(
                 200,
