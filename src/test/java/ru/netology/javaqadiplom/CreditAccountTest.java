@@ -3,7 +3,7 @@ package ru.netology.javaqadiplom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public classgCreditAccountTest {
+public class CreditAccountTest {
 
     @Test //1
     public void shouldAddToPositiveBalance() {
@@ -139,6 +139,7 @@ public classgCreditAccountTest {
                 0,
                 15
         );
+
         int res = account.yearChange();
         int actual = 0;
         Assertions.assertEquals(actual, res);
