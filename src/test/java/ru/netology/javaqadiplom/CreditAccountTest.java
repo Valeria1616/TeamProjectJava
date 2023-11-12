@@ -28,7 +28,7 @@ public class CreditAccountTest {
         );
 
         account.getBalance();
-        Assertions.assertEquals(0, account.getBalance());
+        Assertions.assertEquals(-100, account.getBalance());
     }
 
     @Test
