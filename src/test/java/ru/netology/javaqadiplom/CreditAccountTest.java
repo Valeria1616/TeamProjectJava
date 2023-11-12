@@ -37,10 +37,10 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(
                     0,
-                    0,
+                    -5000,
                     15
             );
-            account.creditLimit = -5000;
+            account.getCreditLimit();
         });
     }
 
