@@ -82,15 +82,15 @@ public class SavingAccountTest {
 
     @Test
     public void shouldNotAddMoreThanMaxBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            SavingAccount account = new SavingAccount(
-                    11_000,
-                    1_000,
-                    10_000,
-                    5);
 
-            account.add(2_000);
-        });
+        SavingAccount account = new SavingAccount(
+                9_000,
+                1_000,
+                10_000,
+                5);
+
+        account.add(2_000);
+        Assertions.assertEquals(9_000, account.getBalance());
 
     }
 
@@ -155,4 +155,6 @@ public class SavingAccountTest {
 
     }
 }
+
+
 
