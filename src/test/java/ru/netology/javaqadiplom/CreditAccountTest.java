@@ -144,4 +144,3 @@ public class CreditAccountTest {
         int actual = 0;
         Assertions.assertEquals(actual, res);
     }
-}
