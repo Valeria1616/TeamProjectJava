@@ -54,8 +54,9 @@ public class CreditAccountTest {
         );
 
         boolean res = account.pay(200);
-        Assertions.assertFalse( res );
+        Assertions.assertFalse(res);
     }
+
     @Test
     public void shouldPayTrue() { // сумма на initialBalance не должна выходить за рамки creditLimit
         CreditAccount account = new CreditAccount(
@@ -78,7 +79,7 @@ public class CreditAccountTest {
         boolean res = account.pay(999);
 
         int resSumAfterPay = 1;
-        Assertions.assertTrue( res );
+        Assertions.assertTrue(res);
         Assertions.assertEquals(resSumAfterPay, account.getBalance());
     }
 
@@ -91,7 +92,7 @@ public class CreditAccountTest {
                 15
         );
         boolean res = account.add(999);
-        Assertions.assertTrue( res );
+        Assertions.assertTrue(res);
     }
 
     @Test
@@ -102,7 +103,7 @@ public class CreditAccountTest {
                 15
         );
         boolean res = account.add(0);
-        Assertions.assertFalse( res );
+        Assertions.assertFalse(res);
     }
 
     @Test
@@ -114,7 +115,7 @@ public class CreditAccountTest {
         );
         boolean res = account.add(10);
         int actual = 20;
-        Assertions.assertTrue( res );
+        Assertions.assertTrue(res);
         Assertions.assertEquals(actual, account.getBalance());
     }
 
@@ -144,3 +145,4 @@ public class CreditAccountTest {
         int actual = 0;
         Assertions.assertEquals(actual, res);
     }
+}
