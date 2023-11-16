@@ -13,6 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+         
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -32,6 +33,7 @@
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
             </plugin>
+                 
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -44,6 +46,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                         
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
@@ -51,9 +54,11 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+                         
                 </executions>
             </plugin>
 
         </plugins>
     </build>
+         
 </project>
